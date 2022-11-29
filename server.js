@@ -36,8 +36,14 @@ const server = http.createServer((request, response) => {
             break;
 
         case '/user':
+
+            //verification que le parametre id existe
             if (requestURL.query.id) {
+
+                // recuperation de l'utilisateur a partir de son id (voir dans le module fakeDB)
                 const user = getUserById(requestURL.query.id)
+
+                // Verification qu'il y a bien un user a cette id
                 if (user) {
                     response.writeHead(200, {'Content-type' : 'application/json'})
                     response.end(JSON.stringify(user))
@@ -63,6 +69,7 @@ const server = http.createServer((request, response) => {
             break;
     
         default:
+            // Gestion du pathname si pas dans le switch
             response.writeHead(404)
             response.end('Fichier introuvable')
             break;
