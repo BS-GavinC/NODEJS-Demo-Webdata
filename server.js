@@ -1,3 +1,5 @@
+
+// import des modules
 const readFile = require("./modules/demo-fs");
 const {fakeDb, getUserById} = require("./modules/fakeDb");
 const http = require('http');
@@ -6,23 +8,30 @@ const fs = require("fs");
 const path = require('path')
 
 
-
+// Creation du server NODE
 const server = http.createServer((request, response) => {
 
+    //Recuperation des informations de l'url
     const requestURL = url.parse(request.url, true)
 
+
+    //switch sur base de l'url pathname ex : "/index"
     switch (requestURL.pathname) {
-
-
 
         case '/':
             console.log('Je suis a l\'index')
+
+            // inscription du code server dans le header de la reponse
             response.writeHead(200)
+
+            
             response.end()
             break;
 
         case '/users':
             response.writeHead(200, {'Content-type' : 'application/json'})
+
+            //envoi de la liste des utilisateur en JSON au client
             response.end(JSON.stringify(fakeDb.users))
             break;
 
@@ -62,7 +71,9 @@ const server = http.createServer((request, response) => {
 
 })
 
+// le serveur ecoute sur le port donné ex :' localhost:1337'
 
+//server.listen(8080) est valide aussi
 server.listen(1337, () => {
     console.log('Server listen at http://localhost:1337');
 })

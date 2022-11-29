@@ -8,10 +8,16 @@ const fakeDb = {
 
     
 }
+
+const user = {
+    id: 1,
+    name : "Paul"
+}
+
 const getUserById = (id) => {
     return fakeDb.users.find((u) => u.id == id)
 }
 
     
-
+// export des modules pour le server.js
 module.exports = {fakeDb, getUserById}
