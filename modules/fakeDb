@@ -1,0 +1,17 @@
+const fakeDb = {
+    users : [
+        {id : 1, name : 'paul'},
+        {id : 2, name : 'Pierre'},
+        {id : 3, name : 'Jacques'},
+        {id : 4, name : 'Fabrice'}
+    ]
+
+    
+}
+const getUserById = (id) => {
+    return fakeDb.users.find((u) => u.id == id)
+}
+
+    
+
+module.exports = {fakeDb, getUserById}
